@@ -1,0 +1,21 @@
+select count(*) from green_taxi_data 
+where lpep_pickup_datetime::date = '2019-01-15' and lpep_dropoff_datetime::date = '2019-01-15'
+
+
+select date_trunc('day',lpep_pickup_datetime) as pickup_day,
+max(trip_distance) as max_trip
+from green_taxi_data
+group by 1
+order by 2 desc
+
+select count(trip_distance), passenger_count
+from green_taxi_data
+where lpep_pickup_datetime::date = '2019-01-01' and lpep_dropoff_datetime::date = '2019-01-01'
+and passenger_count = 2
+group by 2
+
+select count(trip_distance), passenger_count
+from green_taxi_data
+where lpep_pickup_datetime::date = '2019-01-01' and lpep_dropoff_datetime::date = '2019-01-01'
+and passenger_count = 3
+group by 2
